@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
 		})
 
 		.when('/location/:id', {
-			templateUrl: 'location.php?id={{id}}',
+			templateUrl: 'php/location.php?id={{id}}',
 			controller: function($scope, $routeParams) {
 				$scope.id = $routeParams.id;
 			}
@@ -18,7 +18,7 @@ app.config(function($routeProvider) {
 });
 
 app.controller('HomeCtrl', function($scope, $http) {
-	$scope.url = "search.php";
+	$scope.url = 'php/search.php';
 
 	$scope.search = function() {
 		$http.post($scope.url, { 'data': $scope.keywords })
@@ -26,10 +26,10 @@ app.controller('HomeCtrl', function($scope, $http) {
 				$scope.status = status;
 				$scope.data = data;
 				$scope.result = data;
-				$scope.keywords = "";
+				$scope.keywords = '';
 			})
 			.error(function(data, status) {
-				$scope.data = data || "Request Failed";
+				$scope.data = data || 'Request Failed';
 				$scope.status = status;
 			});
 	};
