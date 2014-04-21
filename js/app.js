@@ -7,6 +7,13 @@ app.config(function($routeProvider) {
 			controller:  'HomeCtrl'
 		})
 
+		.when('/location/:id', {
+			templateUrl: 'location.php?id={{id}}',
+			controller: function($scope, $routeParams) {
+				$scope.id = $routeParams.id;
+			}
+		})
+
 		.otherwise({ redirectTo: '/' });
 });
 

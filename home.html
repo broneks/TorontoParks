@@ -7,7 +7,7 @@
 
 <div ng-repeat="r in result.data">
 	<p ng-if="r.id">
-		<a ng-href="location.php?id={{ r.id }}">{{ r.name }} -- {{ r.address }}</a>
+		<a ng-href="#/location/{{ r.id }}">{{ r.name }} -- {{ r.address }}</a>
 	</p>
 	<p ng-if="r.error" style="color: red;">{{ r.error }}</p>
 </div>
