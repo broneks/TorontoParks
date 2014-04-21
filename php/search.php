@@ -7,7 +7,7 @@ require_once 'xml.php';
 
 // create info array containing all park ids, names and addresses
 $info = array();
-foreach ($locations as $l) {
+foreach ($locationNodes as $l) {
 	$info[] = array(
 		'id'      => $l->firstChild->nodeValue,
 		'name'    => strtolower($l->getElementsByTagName('LocationName')->item(0)->nodeValue),

@@ -8,10 +8,8 @@ app.config(function($routeProvider) {
 		})
 
 		.when('/location/:id', {
-			templateUrl: 'php/location.php?id={{id}}',
-			controller: function($scope, $routeParams) {
-				$scope.id = $routeParams.id;
-			}
+			templateUrl: 'location.html',
+			controller:  'LocationCtrl'
 		})
 
 		.otherwise({ redirectTo: '/' });
@@ -23,8 +21,6 @@ app.controller('HomeCtrl', function($scope, $http) {
 	$scope.search = function() {
 		$http.post($scope.url, { 'data': $scope.keywords })
 			.success(function(data, status) {
-				$scope.status = status;
-				$scope.data = data;
 				$scope.result = data;
 				$scope.keywords = '';
 			})
@@ -33,4 +29,13 @@ app.controller('HomeCtrl', function($scope, $http) {
 				$scope.status = status;
 			});
 	};
+});
+
+app.controller('LocationCtrl', function($scope, $http, $routeParams) {
+	$scope.url = 'php/location.php?id=' + $routeParams.id;
+
+	$http.get($scope.url)
+		.success(function(data, status) {
+			$scope.location = data;
+		});
 });

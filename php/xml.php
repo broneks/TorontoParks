@@ -12,4 +12,4 @@ $doc->load('../xml/locations.xml');
 
 $root = $doc->documentElement;
 
-$locations = $root->getElementsByTagName('Location');
+$locationNodes = $root->getElementsByTagName('Location');

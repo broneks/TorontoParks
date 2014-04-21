@@ -1,0 +1,15 @@
+<a href="#/">Go Back</a>
+
+<br>
+
+<div ng-repeat="location in location.data">
+	<h1>{{ location.name }}</h1>
+	<p><span>Address:</span> {{ location.address }}</p>
+	<p><span>Postal Code:</span> {{ location.pcode }}</p>
+
+	<p>Facilities:</p>
+	<ul ng-repeat="facility in location.facilities">
+		<li><span>Name:</span> {{ facility.name }}</li>
+		<li><span>Type:</span> {{ facility.type }}</li>
+	</ul>
+</div>
