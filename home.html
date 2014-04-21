@@ -1,0 +1,13 @@
+<form>
+	<label>Search:</label>
+	<input type="text" ng-model="keywords" placeholder="Search by address...">
+
+	<button type="submit" ng-click="search()">Search</button>
+</form>
+
+<div ng-repeat="r in result.data">
+	<p ng-if="r.id">
+		<a ng-href="location.php?id={{ r.id }}">{{ r.name }} -- {{ r.address }}</a>
+	</p>
+	<p ng-if="r.error" style="color: red;">{{ r.error }}</p>
+</div>
