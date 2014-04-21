@@ -1,6 +1,10 @@
 <form>
 	<label>Search:</label>
-	<input type="text" ng-model="keywords" placeholder="Search by address...">
+	<input type="text" ng-model="keywords" placeholder="Enter some {{ searchBy }} keywords...">
+	<select ng-init="searchBy='address'" ng-model="searchBy">
+		<option value="address">address</option>
+		<option value="name">name</option>
+	</select>
 
 	<button type="submit" ng-click="search()">Search</button>
 </form>

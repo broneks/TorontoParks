@@ -19,7 +19,7 @@ app.controller('HomeCtrl', function($scope, $http) {
 	$scope.url = 'php/search.php';
 
 	$scope.search = function() {
-		$http.post($scope.url, { 'data': $scope.keywords })
+		$http.post($scope.url, { 'data': $scope.keywords, 'searchBy': $scope.searchBy })
 			.success(function(data, status) {
 				$scope.result = data;
 				$scope.keywords = '';

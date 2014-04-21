@@ -20,6 +20,7 @@ $contents = file_get_contents('php://input');
 
 // get contents of ajax request
 $objData = json_decode($contents);
+$searchBy = $objData->searchBy;
 @$data = strtolower($objData->data);
 
 // set return type to json
@@ -35,8 +36,8 @@ if (!$data) {
 
 // otherwise, find and return the parks that (partially) match the search words
 echo '{"data":[';
-array_filter($info, function($infoArray) use ($data) {
-	if (strpos($infoArray['address'], $data) !== false) {
+array_filter($info, function($infoArray) use ($data, $searchBy) {
+	if (strpos($infoArray[$searchBy], $data) !== false) {
 		echo json_encode(array(
 			'id'      => (int) $infoArray['id'], 
 			'name'    => $infoArray['name'],
