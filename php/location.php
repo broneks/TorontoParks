@@ -21,12 +21,7 @@ foreach ($locationNodes as $l) {
 	if ($l->firstChild->nodeValue == $id) {
 		$facilityNodes = $l->getElementsByTagName('Facility');
 
-		// number of Facility nodes nested within Facilities
-		$count = 0;
-		foreach ($facilityNodes as $f) { $count++; }
-
 		// get info about location's facilities
-		$iteration  = 1;
 		$facilities = array();
 		foreach ($facilityNodes as $f) {
 			$arr = array(
@@ -35,7 +30,6 @@ foreach ($locationNodes as $l) {
 			);
 
 			$facilities[] = $arr;
-			$iteration++;
 		}
 
 		// response

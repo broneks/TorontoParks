@@ -63,7 +63,7 @@ footer small {
   font-size: 1em;
   font-weight: bold;
   color: white;
-  background: blue;
+  background: #31659d;
   border: none;
 }
 .search-result {
@@ -90,7 +90,7 @@ footer small {
   color: red;
 }
 #search-button:hover {
-  background: #0000e6;
+  background: #27507d;
 }
 /* ------------------- */
 /* -- Location Page -- */
@@ -153,7 +153,7 @@ footer small {
 /* ------------------- */
 /* -- Media Queries -- */
 /* ------------------- */
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1110px) {
   /* General */
   header {
     padding-left: 0;
