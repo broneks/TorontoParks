@@ -19,9 +19,9 @@ foreach ($locationNodes as $l) {
 $contents = file_get_contents('php://input');
 
 // get contents of ajax request
-$objData = json_decode($contents);
+$objData  = json_decode($contents);
 $searchBy = $objData->searchBy;
-@$data = strtolower($objData->data);
+@$data    = strtolower($objData->data);
 
 // set return type to json
 header('Content-Type: application/json');
@@ -46,4 +46,4 @@ array_filter($info, function($infoArray) use ($data, $searchBy) {
 		echo ',';
 	}
 });
-echo '{}]}';
+echo '""]}';

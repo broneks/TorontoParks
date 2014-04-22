@@ -26,7 +26,7 @@ foreach ($locationNodes as $l) {
 		foreach ($facilityNodes as $f) { $count++; }
 
 		// get info about location's facilities
-		$iteration = 1;
+		$iteration  = 1;
 		$facilities = array();
 		foreach ($facilityNodes as $f) {
 			$arr = array(

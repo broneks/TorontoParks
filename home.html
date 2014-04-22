@@ -1,17 +1,20 @@
-<form>
-	<label>Search:</label>
-	<input type="text" ng-model="keywords" placeholder="Enter some {{ searchBy }} keywords...">
-	<select ng-init="searchBy='address'" ng-model="searchBy">
+<form id="search-form">
+	<input type="text" id="search-input" ng-model="keywords" placeholder="Enter some {{ searchBy }} keywords...">
+
+	<select id="search-select" ng-init="searchBy='address'" ng-model="searchBy">
 		<option value="address">address</option>
 		<option value="name">name</option>
 	</select>
 
-	<button type="submit" ng-click="search()">Search</button>
+	<button id="search-button" type="submit" ng-click="search()">Search</button>
 </form>
 
-<div ng-repeat="r in result.data">
-	<p ng-if="r.id">
-		<a ng-href="#/location/{{ r.id }}">{{ r.name }} -- {{ r.address }}</a>
-	</p>
-	<p ng-if="r.error" style="color: red;">{{ r.error }}</p>
+<div class="search-result" ng-repeat="r in result.data">
+	<a ng-href="#/location/{{ r.id }}" ng-show="r.id && r.name && r.address">
+		<p class="result" ng-show="r.name"><span>Name:</span> {{ r.name }}</p> 
+		<p class="result" ng-show="r.address"><span>Address:</span> {{ r.address }}</p>
+	</a>
+
+	<p id="result-none" ng-show="result.data == ''">No results found</p>
+	<p id="result-error" ng-show="r.error">{{ r.error }}</p>
 </div>
