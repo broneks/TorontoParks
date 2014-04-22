@@ -5,7 +5,7 @@
 
 <div id="location" ng-repeat="location in location.data">
 	<h2 id="loc-name">{{ location.name }}</h2>
-	<p id="loc-address"><span>Address:</span> {{ location.address }}</p>
+	<p id="loc-address"><span>Address:</span><a ng-href="http://maps.google.com/?q={{ location.name + ' Toronto' }}" target="_blank">{{ location.address }}</a></p>
 	<p id="loc-pcode"><span>Postal Code:</span> {{ location.pcode }}</p>
 
 	<p id="facilities">Facilities:</p>
