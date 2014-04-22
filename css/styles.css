@@ -13,7 +13,7 @@ header h1 {
 }
 #wrapper {
   width: 50%;
-  margin: 50px auto 300px auto;
+  margin: 50px auto 200px auto;
   padding: 2em;
   background: #e0eeee;
   -webkit-border-radius: 5px;
@@ -31,6 +31,18 @@ footer small {
 /* --------------- */
 /* -- Home Page -- */
 /* --------------- */
+#welcome {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+  line-height: 1.5em;
+}
+#welcome #greeting {
+  display: block;
+  margin-bottom: 7px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #31659d;
+}
 #search-form {
   margin-bottom: 30px;
 }
