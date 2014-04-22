@@ -1,12 +1,36 @@
+/* ------------- */
+/* -- General -- */
+/* ------------- */
+header {
+  padding: 1.5em;
+  padding-left: 100px;
+  background: #efefef;
+}
+header h1 {
+  margin-top: 7px;
+  font-size: 1.3em;
+  font-weight: bold;
+}
 #wrapper {
   width: 50%;
-  margin: 50px auto;
+  margin: 50px auto 300px auto;
   padding: 2em;
   background: #e0eeee;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+footer {
+  padding: 20px 0;
+  text-align: right;
+  background: #efefef;
+}
+footer small {
+  margin-right: 100px;
+}
+/* --------------- */
+/* -- Home Page -- */
+/* --------------- */
 #search-form {
   margin-bottom: 30px;
 }
@@ -33,9 +57,16 @@
 .search-result {
   font-size: 1.3em;
 }
+.search-result a {
+  display: block;
+  -webkit-box-shadow: -2px 2px 2px #cccccc;
+  -moz-box-shadow: -2px 2px 2px #cccccc;
+  box-shadow: -2px 2px 2px #cccccc;
+}
 .result {
   padding: .5em;
-  background: #efefef;
+  background: white;
+  color: #659D32;
 }
 .result span {
   font-weight: bold;
@@ -50,7 +81,80 @@
 #search-button:hover {
   background: #0000e6;
 }
+/* ------------------- */
+/* -- Location Page -- */
+/* ------------------- */
+#arrow {
+  position: relative;
+  display: block;
+}
+#arrow #arrow-head {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-right: 20px solid white;
+}
+#arrow #back-anchor {
+  position: absolute;
+  bottom: 8px;
+  left: 18px;
+  padding: 4px;
+  padding-right: 8px;
+  text-decoration: none;
+  background: white;
+}
+#location {
+  margin-top: 40px;
+  font-size: 1.1em;
+}
+#location span {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+  color: green;
+}
+#location #loc-name,
+#location #facilities {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 7px 10px;
+  color: white;
+}
+#location #loc-name {
+  font-size: 1.4em;
+  background: #659D32;
+}
+#location #loc-pcode {
+  margin-top: 5px;
+}
+#location #facilities {
+  margin-top: 40px;
+  background: #31659d;
+}
+#location .facility li + li {
+  margin-top: 5px;
+}
+#location .facility + .facility {
+  margin-top: 15px;
+}
+/* ------------------- */
+/* -- Media Queries -- */
+/* ------------------- */
 @media screen and (max-width: 1040px) {
+  /* General */
+  header {
+    padding-left: 0;
+    text-align: center;
+  }
+  footer {
+    text-align: center;
+  }
+  footer small {
+    margin-right: 0;
+  }
+  /* Home Page */
   #search-input {
     width: 97%;
   }
@@ -71,5 +175,10 @@
   #result-none,
   #result-error {
     text-align: center;
+  }
+  /* Location Page */
+  #arrow {
+    width: 88px;
+    margin: 0 auto 20px auto;
   }
 }
