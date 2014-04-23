@@ -66,31 +66,45 @@ footer small {
   background: #31659d;
   border: none;
 }
+#search-button:hover {
+  background: #27507d;
+}
 .search-result {
   font-size: 1.3em;
 }
-.search-result a {
-  display: block;
+.search-result .container {
+  padding: .5em;
+  overflow: hidden;
+  background: white;
   -webkit-box-shadow: -2px 2px 2px #cccccc;
   -moz-box-shadow: -2px 2px 2px #cccccc;
   box-shadow: -2px 2px 2px #cccccc;
-}
-.result {
-  padding: .5em;
-  background: white;
-}
-.result span {
-  font-weight: bold;
-}
-.search-result + .search-result {
-  margin-top: 20px;
 }
 #result-none,
 #result-error {
   color: red;
 }
-#search-button:hover {
-  background: #27507d;
+.search-result + .search-result {
+  margin-top: 20px;
+}
+.result {
+  float: left;
+}
+.result span {
+  font-size: .8em;
+  font-weight: bold;
+  color: #333;
+}
+.result-info {
+  padding: 5px;
+}
+.result-button {
+  float: right;
+  padding: 5px 7px;
+  font-size: .9em;
+  background: #659d32;
+  color: #fff;
+  text-decoration: none;
 }
 /* ------------------- */
 /* -- Location Page -- */
@@ -117,7 +131,7 @@ footer small {
   background: white;
 }
 #location {
-  margin-top: 40px;
+  margin: 40px 0;
   font-size: 1.1em;
 }
 #location span {
@@ -135,7 +149,7 @@ footer small {
 }
 #location #loc-name {
   font-size: 1.4em;
-  background: #659D32;
+  background: #659d32;
 }
 #location #loc-pcode {
   margin-top: 5px;
@@ -166,6 +180,10 @@ footer small {
     margin-right: 0;
   }
   /* Home Page */
+  #search-result,
+  #search-button {
+    float: none;
+  }
   #search-input {
     width: 97%;
   }
@@ -187,9 +205,21 @@ footer small {
   #result-error {
     text-align: center;
   }
+  .result-button {
+    margin-top: 10px;
+  }
   /* Location Page */
   #arrow {
     width: 88px;
     margin: 0 auto 20px auto;
+  }
+  #location {
+    width: 70%;
+    margin: 40px auto;
+  }
+}
+@media screen and (max-width: 675px) {
+  #location {
+    width: 100%;
   }
 }

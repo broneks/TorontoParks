@@ -1,7 +1,9 @@
+<!-- welcome message -->
 <p id="welcome">
 	<span id="greeting">Welcome!</span> Search for Parks and Recreational Facilities in Toronto by inputing keywords. You can also choose to search either by address or by name.
 </p>
 
+<!-- search form -->
 <form id="search-form">
 	<input type="text" id="search-input" ng-model="keywords" placeholder="Enter some {{ searchBy }} keywords...">
 
@@ -13,11 +15,16 @@
 	<button id="search-button" type="submit" ng-click="search()">Search</button>
 </form>
 
+<!-- search results -->
 <div class="search-result" ng-repeat="r in result.data">
-	<a ng-href="#/location/{{ r.id }}" ng-show="r.id && r.name && r.address">
-		<p class="result" ng-show="r.name"><span>Name:</span> {{ r.name }}</p> 
-		<p class="result" ng-show="r.address"><span>Address:</span> {{ r.address }}</p>
-	</a>
+	<div class="container" ng-show="r.name && r.address && r.id">
+		<div class="result">
+			<p class="result-info"><span>Name:</span> {{ r.name }}</p> 
+			<p class="result-info"><span>Address:</span> {{ r.address }}</p>
+		</div>
+
+		<a class="result-button" ng-href="#/location/{{ r.id }}">View Details</a>
+	</div>
 
 	<p id="result-none" ng-show="result.data == ''">No results were found</p>
 	<p id="result-error" ng-show="r.error">{{ r.error }}</p>

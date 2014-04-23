@@ -1,8 +1,10 @@
+<!-- back arrow -->
 <div id="arrow">
 	<a href="#/"><span id="arrow-head"></span></a>
 	<a id="back-anchor" href="#/">Go Back</a>
 </div>
 
+<!-- location details -->
 <div id="location" ng-repeat="location in location.data">
 	<h2 id="loc-name">{{ location.name }}</h2>
 	<p id="loc-address"><span>Address:</span><a ng-href="http://maps.google.com/?q={{ location.name + ' Toronto' }}" target="_blank">{{ location.address }}</a></p>

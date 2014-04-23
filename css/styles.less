@@ -2,6 +2,9 @@
 /* -- General -- */
 /* ------------- */
 
+@green: #659D32;
+@blue: #31659d;
+
 header {
 	padding: 1.5em;
 	padding-left: 100px;
@@ -42,14 +45,14 @@ footer {
 #welcome {
 	font-size: 1.2em;
 	margin-bottom: 40px; 
-	line-height: 1.5em;
+	line-height: 1.5em;	
 
 	#greeting {
 		display: block;
 		margin-bottom: 7px;
 		text-align: center;
 		font-size: 1.3em;
-		color: #31659d;
+		color: @blue;
 	}
 }
 
@@ -70,15 +73,19 @@ footer {
 	font-size: 1em;
 	font-weight: bold;
 	color: white;
-	background: #31659d;
+	background: @blue;
 	border: none;
+
+	&:hover { background: #27507d; }
 }
 
 .search-result { 
 	font-size: 1.3em; 
 	
-	a {
-		display: block;
+	.container {
+		padding: .5em;
+		overflow: hidden;
+		background: white;
 
 		-webkit-box-shadow: -2px 2px 2px #ccc;
 		-moz-box-shadow: -2px 2px 2px #ccc;
@@ -86,22 +93,34 @@ footer {
 	}
 }
 
-.result {
-	padding: .5em;
-	background: white;
-
-	span { font-weight: bold; }
-}
-
-.search-result + .search-result { margin-top: 20px; }
-
 #result-none,
 #result-error {
 	color: red;
 }
 
-#search-button:hover { background: #27507d; }
 
+.search-result + .search-result { margin-top: 20px; }
+
+.result {
+	float: left;
+
+	span { 
+		font-size: .8em;
+		font-weight: bold; 
+		color: #333;
+	}
+} 
+
+.result-info { padding: 5px; }
+
+.result-button {
+	float: right;
+	padding: 5px 7px;
+	font-size: .9em;
+	background: @green;
+	color: #fff;
+	text-decoration: none;
+}
 
 /* ------------------- */
 /* -- Location Page -- */
@@ -132,7 +151,7 @@ footer {
 }
 
 #location {
-	margin-top: 40px;
+	margin: 40px 0;
 	font-size: 1.1em;
 	
 	span {
@@ -152,25 +171,21 @@ footer {
 
 	#loc-name {
 		font-size: 1.4em;
-		background: #659D32;
+		background: @green;
 	}
 
 	#loc-pcode { margin-top: 5px; }
 
 	#facilities {
 		margin-top: 40px;
-		background: #31659d;
+		background: @blue;
 	}
 
 	.facility {
-		li + li {
-			margin-top: 5px;
-		}
+		li + li { margin-top: 5px; }
 	}
 
-	.facility + .facility {
-		margin-top: 15px;
-	}
+	.facility + .facility { margin-top: 15px; }
 }
 
 
@@ -191,6 +206,11 @@ footer {
 	}
 
 	/* Home Page */
+
+	#search-result,
+	#search-button {
+		float: none;
+	}
 
 	#search-input { width: 97%; }
 	#search-select { 
@@ -215,10 +235,25 @@ footer {
 		text-align: center;
 	}
 
+	.result-button {
+		margin-top: 10px;
+	}
+
 	/* Location Page */
 
 	#arrow {
 		width: 88px;
 		margin: 0 auto 20px auto;
+	}
+
+	#location {
+		width: 70%;
+		margin: 40px auto;
+	}
+}
+
+@media screen and (max-width: 675px) {
+	#location {
+		width: 100%;
 	}
 }
