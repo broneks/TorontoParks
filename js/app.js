@@ -18,11 +18,11 @@ app.config(function($routeProvider) {
 app.factory('mapFactory', function() {
 	// global abatement
 	var myVars = {
-		directions: document.getElementById('directions'),
+		directions: null,
 		directionsDisplay: null,
 		directionsService: null,
-		park: null,
-		map: null
+		map: null,
+		park: null
 	};
 
 	return {
@@ -40,6 +40,7 @@ app.factory('mapFactory', function() {
 	 		};
 
 	 		// reseting variables
+	 		myVars.directions = document.getElementById('directions');
 			myVars.directionsDisplay = new google.maps.DirectionsRenderer();
 	 		myVars.directionsService = new google.maps.DirectionsService();
 			myVars.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
