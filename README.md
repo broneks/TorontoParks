@@ -2,7 +2,6 @@ TorontoParks
 ============
 
 TODO:
-- remove anchor from search results and add a button instead
-- add search by facilities to drop down list
-- implement google maps api (with geocoding and geolocation)
+- add search by 'facilities' to drop down list
+- implement geolocation with google maps api
 - consolidate the two php arrays or replace php altogether with angular services

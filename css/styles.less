@@ -18,9 +18,10 @@ header {
 }
 
 #wrapper {
-	width: 50%;
+	width: 60%;
 	margin: 50px auto 200px auto;
 	padding: 2em;
+	overflow: hidden;
 	background: #e0eeee;
 
 	-webkit-border-radius: 5px;
@@ -151,6 +152,8 @@ footer {
 }
 
 #location {
+	width: 45%;
+	float: left;
 	margin: 40px 0;
 	font-size: 1.1em;
 	
@@ -186,6 +189,13 @@ footer {
 	}
 
 	.facility + .facility { margin-top: 15px; }
+}
+
+#map-canvas {
+	width: 50%;
+	height: 300px;
+	float: right;
+	margin-top: 40px;
 }
 
 
@@ -246,9 +256,20 @@ footer {
 		margin: 0 auto 20px auto;
 	}
 
+	#location,
+	#map-canvas {
+		float: none;
+	}
+
 	#location {
 		width: 70%;
-		margin: 40px auto;
+		margin: 40px auto 60px auto;
+	}
+
+	#map-canvas {
+		width: 100%;
+		margin-top: 0;
+		margin: 0 auto 20px auto;
 	}
 }
 
