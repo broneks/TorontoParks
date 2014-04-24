@@ -18,4 +18,13 @@
 </div>
 
 <!-- google map -->
-<div id="map-canvas" ng-show="location.data"></div>
+<div id="map">
+	<!-- inputs -->
+	<input type="text" id="origin" ng-model="origin" placeholder="Input an address" required>
+	<button ng-click="route()">GO</button>
+
+	<div id="map-canvas" ng-show="location.data"></div>
+</div>
+
+<!-- directions -->
+<div id="directions"></div>

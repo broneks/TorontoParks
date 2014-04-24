@@ -169,11 +169,34 @@ footer small {
 #location .facility + .facility {
   margin-top: 15px;
 }
-#map-canvas {
+#map {
   width: 50%;
-  height: 300px;
   float: right;
-  margin-top: 40px;
+  margin-top: 35px;
+}
+#map #origin {
+  width: 50%;
+  margin-left: 0;
+  margin-bottom: 15px;
+  padding: 3px 7px;
+}
+#map button {
+  padding: 3px 20px;
+  vertical-align: top;
+  font-weight: bold;
+  background: #E8840C;
+  border: 2px solid #999;
+  color: #fff;
+}
+#map button:hover {
+  background: #d0760b;
+}
+#map #map-canvas {
+  width: 100%;
+  height: 300px;
+}
+#directions {
+  clear: both;
 }
 /* ------------------- */
 /* -- Media Queries -- */
@@ -232,9 +255,13 @@ footer small {
     width: 70%;
     margin: 40px auto 60px auto;
   }
+  #map {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
   #map-canvas {
     width: 100%;
-    margin-top: 0;
     margin: 0 auto 20px auto;
   }
 }

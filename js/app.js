@@ -16,7 +16,21 @@ app.config(function($routeProvider) {
 });
 
 app.factory('mapFactory', function() {
+	// global abatement
+	var myVars = {
+		directions: document.getElementById('directions'),
+		directionsDisplay: null,
+		directionsService: null,
+		park: null,
+		map: null
+	};
+
 	return {
+		//
+		// INITIALIZE METHOD
+		// -----------------
+		// sets map on load and centers on the selected park's exact location 
+		//
 		init: function(loc_name) {
 			var geocoder = new google.maps.Geocoder();
 
@@ -25,14 +39,23 @@ app.factory('mapFactory', function() {
 				center: new google.maps.LatLng(-34.397, 150.644)
 	 		};
 
-			var map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
+	 		// reseting variables
+			myVars.directionsDisplay = new google.maps.DirectionsRenderer();
+	 		myVars.directionsService = new google.maps.DirectionsService();
+			myVars.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+			// attaching directions display to 'directions' div
+			myVars.directionsDisplay.setMap(myVars.map);
+			myVars.directionsDisplay.setPanel(myVars.directions);
 
       		geocoder.geocode({ 'address': loc_name + ' Toronto' }, function(results, status) {
         		if (status == google.maps.GeocoderStatus.OK) {
           			if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
 
-          				map.setCenter(results[0].geometry.location);
+          				myVars.park = results[0].geometry.location;
+
+          				google.maps.event.trigger(myVars.map, 'resize');
+          				myVars.map.setCenter(myVars.park);          				
 
 			            var infowindow = new google.maps.InfoWindow({ 
 								content: 'Name:<br>' + loc_name + '<br><br>Address:<br>' + results[0].formatted_address,
@@ -40,26 +63,54 @@ app.factory('mapFactory', function() {
 							});
 
             			var marker = new google.maps.Marker({
-                				position: results[0].geometry.location,
-               					map: map, 
+                				position: myVars.park,
+               					map: myVars.map, 
                 				title: loc_name + ' - ' + results[0].formatted_address 
             				}); 
-            
+            			
+            			// full address displays in info window when marker is clicked
             			google.maps.event.addListener(marker, 'click', function() {
-                			infowindow.open(map, marker);
+                			infowindow.open(myVars.map, marker);
             			});
             		}
             	} else {
-            		alert("An unexpected error occurred: " + status);
+            		alert('An unexpected error occurred: ' + status);
             	}
             });
-		}
+		},
+
+		//
+		// ROUTE METHOD
+		// ------------
+		// calculates route and directions from a user-declared origin point to the selected park
+		//
+ 		route: function(origin) {
+    		if (origin) {
+
+				var request = {
+					origin: origin,
+					destination: myVars.park,
+					travelMode: google.maps.TravelMode.DRIVING
+				};
+
+				myVars.directionsService.route(request, function(response, status) {
+					if (status == google.maps.DirectionsStatus.OK)
+						myVars.directionsDisplay.setDirections(response);
+				});
+
+    		} else {
+
+    			directions.innerHTML = '';
+    			document.getElementById('origin').placeholder = 'An Origin point is required ***';
+    		}
+  		}
 	};
 });
 
 app.controller('HomeCtrl', function($scope, $http) {
 	$scope.url = 'php/search.php';
 
+	// get search results
 	$scope.search = function() {
 		$http.post($scope.url, { 'data': $scope.keywords, 'searchBy': $scope.searchBy })
 			.success(function(data, status) {
@@ -76,6 +127,7 @@ app.controller('HomeCtrl', function($scope, $http) {
 app.controller('LocationCtrl', function($scope, $http, $routeParams, mapFactory) {
 	$scope.url = 'php/location.php?id=' + $routeParams.id;
 
+	// get location data
 	$http.get($scope.url)
 		.success(function(data, status) {
 			$scope.location = data;
@@ -83,4 +135,8 @@ app.controller('LocationCtrl', function($scope, $http, $routeParams, mapFactory)
 			if (data.data)
 				mapFactory.init(data.data[0].name);
 		});
+
+	$scope.route = function() {
+		mapFactory.route($scope.origin);
+	};
 });
