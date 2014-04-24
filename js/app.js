@@ -58,14 +58,14 @@ app.factory('mapFactory', function() {
           				myVars.map.setCenter(myVars.park);          				
 
 			            var infowindow = new google.maps.InfoWindow({ 
-								content: 'Name:<br>' + loc_name + '<br><br>Address:<br>' + results[0].formatted_address,
+								content: 'Address:<br><br>' + results[0].formatted_address,
 			                  	size: new google.maps.Size(150,50)
 							});
 
             			var marker = new google.maps.Marker({
                 				position: myVars.park,
                					map: myVars.map, 
-                				title: loc_name + ' - ' + results[0].formatted_address 
+                				title: results[0].formatted_address 
             				}); 
             			
             			// full address displays in info window when marker is clicked
@@ -133,7 +133,7 @@ app.controller('LocationCtrl', function($scope, $http, $routeParams, mapFactory)
 			$scope.location = data;
 
 			if (data.data)
-				mapFactory.init(data.data[0].name);
+				mapFactory.init(data.data[0].name + ' ' + data.data[0].address);
 		});
 
 	$scope.route = function() {
