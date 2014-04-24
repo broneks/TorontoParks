@@ -91,13 +91,15 @@ footer small {
 .result {
   float: left;
 }
-.result span {
+.result-info {
+  padding: 5px;
+}
+.result-info span {
+  display: inline-block;
+  width: 70px;
   font-size: .8em;
   font-weight: bold;
   color: #333;
-}
-.result-info {
-  padding: 5px;
 }
 .result-button {
   float: right;

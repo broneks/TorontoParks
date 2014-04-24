@@ -22,6 +22,7 @@ $contents = file_get_contents('php://input');
 $objData  = json_decode($contents);
 $searchBy = $objData->searchBy;
 @$data    = strtolower($objData->data);
+@$substr  = substr($data, 1);
 
 // set return type to json
 header('Content-Type: application/json');
@@ -31,6 +32,18 @@ if (!$data) {
 	echo '{"data":[';
 	echo json_encode(array('error' => 'Please input something'));
 	echo ']}';
+	exit();
+} 
+elseif ($data === '*') {
+	echo '{"data":';
+	echo json_encode($info);
+	echo '}';
+	exit();
+}
+elseif (is_numeric($substr) && $substr < count($info)) {
+	echo '{"data":';
+	echo json_encode(array_slice($info, 0, $substr, true));
+	echo '}';
 	exit();
 }
 
