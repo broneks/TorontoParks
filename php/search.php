@@ -40,7 +40,7 @@ elseif ($data === '*') {
 	echo '}';
 	exit();
 }
-elseif (is_numeric($substr) && $substr < count($info)) {
+elseif (substr($data, 0, 1) === '*' && is_numeric($substr) && $substr < count($info)) {
 	echo '{"data":';
 	echo json_encode(array_slice($info, 0, $substr, true));
 	echo '}';
